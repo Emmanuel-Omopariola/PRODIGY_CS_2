@@ -13,18 +13,6 @@ Features
 - Auto-refresh history showing recent actions
 - Stylish dark-themed interface using HTML/CSS
 
-Folder Structure
-----------------
-PRODIGY_CS_2/
-├── app.py
-├── uploads/              # Uploaded original images
-├── encrypted/            # Encrypted & decrypted images saved here
-├── templates/
-│   └── index.html        # Frontend interface
-├── static/
-│   └── style.css         # Dark theme styling
-└── README.txt
-
 Installation
 ------------
 1. Clone the Repository
