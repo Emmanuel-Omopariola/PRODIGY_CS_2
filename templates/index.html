@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Encryptor</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔒 Image Encryption Tool</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <div class="btn-group">
+        <button type="submit" name="action" value="Encrypt">Encrypt</button>
+        <button type="submit" name="action" value="Decrypt">Decrypt</button>
+      </div>
+    </form>
+
+    {% if encrypted_filename %}
+      <h3>Encrypted Image</h3>
+      <img src="{{ url_for('download_file', filename=encrypted_filename) }}" alt="Encrypted" class="image-preview">
+      <a href="{{ url_for('download_file', filename=encrypted_filename) }}" class="download-btn">⬇ Download Encrypted Image</a>
+    {% endif %}
+    
+    {% if decrypted_filename %}
+      <h3>Decrypted Image</h3>
+      <img src="{{ url_for('download_file', filename=decrypted_filename) }}" alt="Decrypted" class="image-preview">
+      <a href="{{ url_for('download_file', filename=decrypted_filename) }}" class="download-btn">⬇ Download Decrypted Image</a>
+    {% endif %}
+
+    <div class="history">
+      <h3>History</h3>
+
+      <div class="history-section">
+        <h4>Encrypted History</h4>
+        <div class="history-images">
+          {% for image in encrypted_history %}
+            <div class="history-item">
+              <img src="{{ url_for('download_file', filename=image) }}" alt="Encrypted History">
+              <a href="{{ url_for('download_file', filename=image) }}" class="download-btn">⬇ Download</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="history-section">
+        <h4>Decrypted History</h4>
+        <div class="history-images">
+          {% for image in decrypted_history %}
+            <div class="history-item">
+              <img src="{{ url_for('download_file', filename=image) }}" alt="Decrypted History">
+              <a href="{{ url_for('download_file', filename=image) }}" class="download-btn">⬇ Download</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
